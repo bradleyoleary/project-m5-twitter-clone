@@ -6,10 +6,14 @@ import Bookmarks from "./Components/Bookmarks";
 import TweetDetails from "./Components/TweetDetails";
 import Profile from "./Components/Profile";
 import Sidebar from "./Components/Sidebar";
+import { CurrentUserContext } from "./Components/CurrentUserContext";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyles";
 
 const App = () => {
+  const { currentUser, status, error } = React.useContext(CurrentUserContext);
+  //console.log(currentUser);
+  //console.log(status);
   return (
     <>
       <Router>
@@ -18,19 +22,27 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path="/">
-              <HomeFeed />
+              <HomeFeed
+                currentUser={currentUser}
+                status={status}
+                error={error}
+              />
             </Route>
-            <Route path="/notifications">
+            <Route exact path="/notifications">
               <Notifications />
             </Route>
-            <Route path="/bookmarks">
+            <Route exact path="/bookmarks">
               <Bookmarks />
             </Route>
-            <Route path="/tweet/:tweetID">
+            <Route exact path="/tweet/:tweetID">
               <TweetDetails />
             </Route>
-            <Route path="/:profileID">
-              <Profile />
+            <Route exact path="/:profileID">
+              <Profile
+                currentUser={currentUser}
+                status={status}
+                error={error}
+              />
             </Route>
           </Switch>
         </Wrapper>
@@ -41,6 +53,7 @@ const App = () => {
 
 const Wrapper = styled.div`
   display: flex;
+  grid-template-columns: 275px 1fr;
 `;
 
 export default App;

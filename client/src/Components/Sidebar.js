@@ -15,19 +15,19 @@ const Sidebar = () => {
           <SidebarText>Home</SidebarText>
         </span>
       </StyledLink>
-      <StyledLink to="/profile">
+      <StyledLink exact to="/profile">
         <span>
           <FiUser style={{ width: "28px", height: "28px" }} />
           <SidebarText>Profile</SidebarText>
         </span>
       </StyledLink>
-      <StyledLink to="/notifications">
+      <StyledLink exact to="/notifications">
         <span>
           <FiBell style={{ width: "28px", height: "28px" }} />
           <SidebarText>Notifications</SidebarText>
         </span>
       </StyledLink>
-      <StyledLink to="/bookmarks">
+      <StyledLink exact to="/bookmarks">
         <span>
           <FiBookmark style={{ width: "28px", height: "28px" }} />
           <SidebarText>Bookmarks</SidebarText>
@@ -74,7 +74,7 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-const SidebarText = styled.text`
+const SidebarText = styled.span`
   font-weight: bold;
   font-size: 16px;
   margin-left: 20px;
