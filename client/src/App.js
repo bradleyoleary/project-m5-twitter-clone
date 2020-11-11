@@ -11,7 +11,7 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyles";
 
 const App = () => {
-  const { currentUser, status, error } = React.useContext(CurrentUserContext);
+  const { status } = React.useContext(CurrentUserContext);
   //console.log(currentUser);
   //console.log(status);
   return (

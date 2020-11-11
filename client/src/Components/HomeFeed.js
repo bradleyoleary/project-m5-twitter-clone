@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SmallTweet from "./SmallTweet";
+import LoadingIcon from "./LoadingIcon";
 
 const HomeFeed = () => {
   const [feed, setFeed] = React.useState(null);
@@ -35,6 +36,7 @@ const HomeFeed = () => {
           })}
         </div>
       )}
+      <LoadingIcon />
     </FeedWrapper>
   );
 };
