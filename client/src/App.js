@@ -22,11 +22,7 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path="/">
-              <HomeFeed
-                currentUser={currentUser}
-                status={status}
-                error={error}
-              />
+              <HomeFeed />
             </Route>
             <Route exact path="/notifications">
               <Notifications />
@@ -38,11 +34,7 @@ const App = () => {
               <TweetDetails />
             </Route>
             <Route exact path="/:profileID">
-              <Profile
-                currentUser={currentUser}
-                status={status}
-                error={error}
-              />
+              <Profile />
             </Route>
           </Switch>
         </Wrapper>
@@ -52,8 +44,8 @@ const App = () => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  grid-template-columns: 275px 1fr;
+  display: grid;
+  grid-template-columns: 290px 1fr;
 `;
 
 export default App;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export const CurrentUserContext = React.createContext(null);
 
@@ -11,7 +11,7 @@ export const CurrentUserProvider = ({ children }) => {
   // When the data is received, update currentUser.
   // Also, set `status` to `idle`
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch("/api/me/profile", {
       method: "GET",
       headers: {
@@ -26,7 +26,7 @@ export const CurrentUserProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         const profile = data.profile;
         setCurrentUser(profile);
         setStatus("idle");

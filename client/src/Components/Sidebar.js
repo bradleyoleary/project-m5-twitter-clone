@@ -38,13 +38,12 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.div`
-  padding: 20px;
-  margin-left: 20px;
-  height: 100vh;
+  padding: 20px 0px;
+  margin-left: 50px;
+  height: 100%;
   width: 240px;
   position: sticky;
   border-right: 1px solid ${COLORS.SideBardDivider};
-  box-shadow: 15px 0px 36px -18px rgba(0, 0, 0, 0.1);
 `;
 
 const StyledLogo = styled(Logo)`
