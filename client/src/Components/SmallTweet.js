@@ -7,6 +7,7 @@ import ActionBar from "./ActionBar";
 import { Link, useHistory } from "react-router-dom";
 
 const SmallTweet = ({ tweetInfo }) => {
+  //console.log(tweetInfo);
   const date = format(new Date(tweetInfo.timestamp), "LLL do");
   const { author } = tweetInfo;
   const [isLiked, setIsLiked] = React.useState(tweetInfo.isLiked);

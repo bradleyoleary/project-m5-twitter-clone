@@ -38,7 +38,7 @@ const App = () => {
             <Route exact path="/tweet/:tweetID">
               <TweetDetails />
             </Route>
-            <Route exact path="/:profileID">
+            <Route exact path="/:profileId">
               <Profile />
             </Route>
           </Switch>

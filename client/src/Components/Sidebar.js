@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { FiHome, FiUser, FiBell, FiBookmark } from "react-icons/fi";
 import { COLORS } from "./constants";
+import { CurrentUserContext } from "./CurrentUserContext";
 
 const Sidebar = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser);
   return (
     <Wrapper>
       <StyledLogo />
@@ -15,7 +18,7 @@ const Sidebar = () => {
           <SidebarText>Home</SidebarText>
         </span>
       </StyledLink>
-      <StyledLink exact to="/profile">
+      <StyledLink exact to={`/${currentUser?.handle}`}>
         <span>
           <FiUser style={{ width: "28px", height: "28px" }} />
           <SidebarText>Profile</SidebarText>
