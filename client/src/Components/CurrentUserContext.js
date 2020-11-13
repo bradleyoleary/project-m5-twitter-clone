@@ -4,8 +4,8 @@ export const CurrentUserContext = React.createContext(null);
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState(null);
-  const [status, setStatus] = React.useState("idle");
-  const [error, setError] = React.useState(null);
+  const [status, setStatus] = React.useState("loading");
+  const [error, setError] = React.useState(false);
 
   // Fetch the user data from the API (/me/profile)
   // When the data is received, update currentUser.
@@ -28,6 +28,7 @@ export const CurrentUserProvider = ({ children }) => {
       .then((data) => {
         //console.log(data);
         const profile = data.profile;
+        //console.log(profile);
         setCurrentUser(profile);
         setStatus("idle");
       })

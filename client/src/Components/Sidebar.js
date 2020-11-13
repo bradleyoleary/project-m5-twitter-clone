@@ -40,10 +40,9 @@ const Sidebar = () => {
 const Wrapper = styled.div`
   padding: 20px 0px;
   margin-left: 50px;
-  height: 100%;
   width: 240px;
   position: sticky;
-  border-right: 1px solid ${COLORS.SideBardDivider};
+  border-right: 1px solid ${COLORS.divider};
 `;
 
 const StyledLogo = styled(Logo)`
@@ -68,7 +67,7 @@ const StyledLink = styled(NavLink)`
   }
 
   &:hover > span {
-    background: ${COLORS.secondary};
+    background: ${COLORS.hover};
     border-radius: 50px;
   }
 `;

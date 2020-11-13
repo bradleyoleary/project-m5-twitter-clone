@@ -17,6 +17,7 @@ const SmallTweet = ({ tweetInfo }) => {
   );
 
   let history = useHistory();
+  //console.log(history);
   const ClickLink = () => {
     history.push(`/tweet/${tweetInfo.id}`);
   };
@@ -80,8 +81,7 @@ const SmallTweet = ({ tweetInfo }) => {
 };
 
 const TweetContainer = styled.div`
-  border-right: 1px solid ${COLORS.SideBardDivider};
-  border-bottom: 1px solid ${COLORS.SideBardDivider};
+  border-bottom: 1px solid ${COLORS.divider};
   padding: 15px;
 
   &:hover {

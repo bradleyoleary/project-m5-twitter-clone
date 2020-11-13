@@ -9,11 +9,11 @@ import Sidebar from "./Components/Sidebar";
 import { CurrentUserContext } from "./Components/CurrentUserContext";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyles";
+import TweetInput from "./Components/TweetInput";
+import LoadingIcon from "./Components/LoadingIcon";
 
 const App = () => {
   const { status } = React.useContext(CurrentUserContext);
-  //console.log(currentUser);
-  //console.log(status);
   return (
     <>
       <Router>
@@ -22,7 +22,10 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path="/">
-              <HomeFeed />
+              <div>
+                {status !== "loading" ? <TweetInput /> : <LoadingIcon />}
+                {status !== "loading" ? <HomeFeed /> : null}
+              </div>
             </Route>
             <Route exact path="/notifications">
               <Notifications />

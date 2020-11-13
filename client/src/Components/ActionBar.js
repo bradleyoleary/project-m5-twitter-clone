@@ -64,7 +64,7 @@ const ActionBar = ({
       </IconWrapper>
       <IconWrapper>
         <RepeatIcon onClick={RetweetHandler} />
-        {numOfRetweets !== 0 ? <Number>{numOfRetweets}</Number> : null}
+        {numOfRetweets > 0 ? <Number>{numOfRetweets}</Number> : null}
       </IconWrapper>
       <IconWrapper>
         <HeartIcon
@@ -74,7 +74,7 @@ const ActionBar = ({
             stroke: isLiked ? "red" : `${COLORS.secondaryFont}`,
           }}
         />
-        {numOfLikes !== 0 ? <Number>{numOfLikes}</Number> : null}
+        {numOfLikes > 0 ? <Number>{numOfLikes}</Number> : null}
       </IconWrapper>
       <IconWrapper>
         <UploadIcon />
@@ -97,7 +97,7 @@ const IconWrapper = styled.span`
 
   &:hover > svg {
     color: ${COLORS.primary};
-    background: ${COLORS.secondary};
+    background: ${COLORS.hover};
   }
 `;
 

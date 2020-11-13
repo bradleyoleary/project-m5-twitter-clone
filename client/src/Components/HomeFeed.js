@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import SmallTweet from "./SmallTweet";
 import LoadingIcon from "./LoadingIcon";
+import COLORS from "./constants";
+import { HomeFeedContext } from "./HomeFeedContext";
 
 const HomeFeed = () => {
-  const [feed, setFeed] = React.useState(null);
-  const [feedLoadingStatus, setFeedLoadingStatus] = React.useState("loading");
+  const { feed, setFeed, setFeedLoadingStatus } = React.useContext(
+    HomeFeedContext
+  );
 
   React.useEffect(() => {
     fetch("/api/me/home-feed", {
@@ -16,14 +19,13 @@ const HomeFeed = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setFeed(data);
         setFeedLoadingStatus("idle");
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   return (
     <FeedWrapper>
@@ -45,6 +47,7 @@ const FeedWrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 80%;
+  border-right: 1px solid ${COLORS.divider};
 `;
 
 export default HomeFeed;
