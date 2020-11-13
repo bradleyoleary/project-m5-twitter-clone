@@ -11,6 +11,7 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyles";
 import TweetInput from "./Components/TweetInput";
 import LoadingIcon from "./Components/LoadingIcon";
+import { HomeFeedHeader } from "./Components/HomeFeedHeader";
 
 const App = () => {
   const { status } = React.useContext(CurrentUserContext);
@@ -23,6 +24,7 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <div>
+                {status !== "loading" ? <HomeFeedHeader /> : null}
                 {status !== "loading" ? <TweetInput /> : <LoadingIcon />}
                 {status !== "loading" ? <HomeFeed /> : null}
               </div>
