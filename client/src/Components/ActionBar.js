@@ -39,6 +39,7 @@ const ActionBar = ({
 
   const LikeHandler = (event) => {
     const setValue = !isLiked;
+    //console.log(setValue);
     event.stopPropagation();
     const incOrDec = isLiked ? -1 : 1;
     setIsLiked(!isLiked);

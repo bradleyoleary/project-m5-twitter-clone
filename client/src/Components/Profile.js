@@ -2,6 +2,7 @@ import React from "react";
 import Styled from "styled-components";
 import { useParams } from "react-router-dom";
 import ProfileHeader from "./ProfileHeader";
+import LoadingIcon from "./LoadingIcon";
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -27,7 +28,7 @@ const Profile = () => {
       {status === "idle" ? (
         <ProfileHeader profileInfo={profileInfo} />
       ) : (
-        <div>loading</div>
+        <LoadingIcon />
       )}
     </div>
   );

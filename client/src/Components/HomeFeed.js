@@ -19,14 +19,14 @@ const HomeFeed = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setFeed(data);
         setFeedLoadingStatus("idle");
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   return (
     <FeedWrapper>

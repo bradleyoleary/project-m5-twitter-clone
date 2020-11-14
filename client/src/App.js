@@ -35,7 +35,7 @@ const App = () => {
             <Route exact path="/bookmarks">
               <Bookmarks />
             </Route>
-            <Route exact path="/tweet/:tweetID">
+            <Route exact path="/tweet/:tweetId">
               <TweetDetails />
             </Route>
             <Route exact path="/:profileId">
