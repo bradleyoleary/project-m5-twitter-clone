@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { COLORS } from "./constants";
 import ProfileHeader from "./ProfileHeader";
 import LoadingIcon from "./LoadingIcon";
 import { ProfileContext } from "./ProfileContext";

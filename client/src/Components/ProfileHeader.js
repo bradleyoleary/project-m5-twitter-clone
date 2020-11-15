@@ -18,7 +18,7 @@ const ProfileHeader = () => {
         <FollowBtn>Following</FollowBtn>
         <DisplayName>{profile.displayName}</DisplayName>
         <Handle>@{profile.handle}</Handle>
-        <FollowsYou>Follows You</FollowsYou>
+        {profile.isFollowingYou && <FollowsYou>Follows You</FollowsYou>}
         <UserBio>{profile.bio}</UserBio>
         {profile.location ? (
           <Location>

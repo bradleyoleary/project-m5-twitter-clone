@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import SmallTweet from "./SmallTweet";
 import LoadingIcon from "./LoadingIcon";
-import COLORS from "./constants";
 import { HomeFeedContext } from "./HomeFeedContext";
 import FeedHook from "../FeedHook";
 
