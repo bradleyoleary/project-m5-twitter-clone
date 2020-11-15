@@ -36,6 +36,9 @@ const Sidebar = () => {
           <SidebarText>Bookmarks</SidebarText>
         </span>
       </StyledLink>
+      <div style={{ display: "flex", justifyContent: "flex-start" }}>
+        <MeowBtn>Meow</MeowBtn>
+      </div>
     </Wrapper>
   );
 };
@@ -79,6 +82,22 @@ const SidebarText = styled.span`
   font-weight: bold;
   font-size: 16px;
   margin-left: 20px;
+`;
+
+const MeowBtn = styled.button`
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background: ${COLORS.primary};
+  color: white;
+  border-radius: 50px;
+  padding: 10px;
+  border: 0px;
+  outline: none;
+  width: 84%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 export default Sidebar;

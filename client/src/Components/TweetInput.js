@@ -91,8 +91,6 @@ const TweetInput = () => {
 };
 
 const Wrapper = styled.div`
-  max-width: 80%;
-  border-right: 1px solid ${COLORS.divider};
   border-bottom: 8px solid ${COLORS.divider};
 `;
 

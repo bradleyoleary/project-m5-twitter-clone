@@ -8,10 +8,12 @@ import Profile from "./Components/Profile";
 import Sidebar from "./Components/Sidebar";
 import { CurrentUserContext } from "./Components/CurrentUserContext";
 import styled from "styled-components";
+import { COLORS } from "./Components/constants";
 import GlobalStyle from "./GlobalStyles";
 import TweetInput from "./Components/TweetInput";
 import LoadingIcon from "./Components/LoadingIcon";
 import { HomeFeedHeader } from "./Components/HomeFeedHeader";
+import ProfileProvider from "./Components/ProfileContext";
 
 const App = () => {
   const { status } = React.useContext(CurrentUserContext);
@@ -26,7 +28,9 @@ const App = () => {
               <div>
                 {status !== "loading" ? <HomeFeedHeader /> : null}
                 {status !== "loading" ? <TweetInput /> : <LoadingIcon />}
-                {status !== "loading" ? <HomeFeed /> : null}
+                {status !== "loading" ? (
+                  <HomeFeed url="/api/me/home-feed" />
+                ) : null}
               </div>
             </Route>
             <Route exact path="/notifications">
@@ -39,7 +43,9 @@ const App = () => {
               <TweetDetails />
             </Route>
             <Route exact path="/:profileId">
-              <Profile />
+              <ProfileProvider>
+                <Profile />
+              </ProfileProvider>
             </Route>
           </Switch>
         </Wrapper>
@@ -51,6 +57,8 @@ const App = () => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 290px 1fr;
+  max-width: 80%;
+  border-right: 1px solid ${COLORS.divider};
 `;
 
 export default App;

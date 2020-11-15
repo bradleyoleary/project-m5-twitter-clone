@@ -1,37 +1,35 @@
 import React from "react";
-import Styled from "styled-components";
-import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { COLORS } from "./constants";
 import ProfileHeader from "./ProfileHeader";
 import LoadingIcon from "./LoadingIcon";
+import { ProfileContext } from "./ProfileContext";
+import HomeFeed from "./HomeFeed";
 
 const Profile = () => {
-  const { profileId } = useParams();
-  const [status, setStatus] = React.useState("loading");
-  const [profileInfo, setProfileInfo] = React.useState(null);
-  //console.log(profileId);
-  React.useEffect(() => {
-    fetch(`api/${profileId}/profile`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProfileInfo(data);
-        setStatus("idle");
-      });
-  }, [profileId]);
+  const { status, profileId } = React.useContext(ProfileContext);
+
   return (
-    <div>
+    <Wrapper>
       {status === "idle" ? (
-        <ProfileHeader profileInfo={profileInfo} />
+        <Container>
+          <ProfileHeader />
+          <HomeFeed url={`/api/${profileId}/feed`} />
+        </Container>
       ) : (
         <LoadingIcon />
       )}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Container = styled.div`
+  width: 100%;
+`;
 
 export default Profile;
