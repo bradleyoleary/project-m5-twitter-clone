@@ -4,6 +4,7 @@ import SmallTweet from "./SmallTweet";
 import LoadingIcon from "./LoadingIcon";
 import { HomeFeedContext } from "./HomeFeedContext";
 import FeedHook from "../FeedHook";
+import ErrorPage from "./ErrorPage";
 
 const HomeFeed = ({ url }) => {
   const {
@@ -11,27 +12,38 @@ const HomeFeed = ({ url }) => {
     setFeed,
     feedLoadingStatus,
     setFeedLoadingStatus,
+    error,
+    setError,
   } = React.useContext(HomeFeedContext);
 
   FeedHook({
     url: url,
     dataSet: setFeed,
     loadingStatus: setFeedLoadingStatus,
+    errorSet: setError,
   });
 
   return (
-    <FeedContainer>
-      {feedLoadingStatus === "idle" ? (
-        <div>
-          {feed.tweetIds.map((tweetId, index) => {
-            const tweetInfo = feed.tweetsById[tweetId];
-            return <SmallTweet key={tweetId + index} tweetInfo={tweetInfo} />;
-          })}
-        </div>
+    <div>
+      {error === false ? (
+        <FeedContainer>
+          {feedLoadingStatus === "idle" ? (
+            <div>
+              {feed.tweetIds.map((tweetId, index) => {
+                const tweetInfo = feed.tweetsById[tweetId];
+                return (
+                  <SmallTweet key={tweetId + index} tweetInfo={tweetInfo} />
+                );
+              })}
+            </div>
+          ) : (
+            <LoadingIcon />
+          )}
+        </FeedContainer>
       ) : (
-        <LoadingIcon />
+        <ErrorPage />
       )}
-    </FeedContainer>
+    </div>
   );
 };
 

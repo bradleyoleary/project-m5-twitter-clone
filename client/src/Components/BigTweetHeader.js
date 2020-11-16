@@ -44,6 +44,7 @@ const ArrowIcon = styled(FiArrowLeft)`
 const Title = styled.span`
   padding: 10px;
   font-size: 21px;
+  font-weight: bold;
 `;
 
 export default BigTweetHeader;

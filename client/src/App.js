@@ -15,9 +15,10 @@ import LoadingIcon from "./Components/LoadingIcon";
 import { HomeFeedHeader } from "./Components/HomeFeedHeader";
 import ProfileProvider from "./Components/ProfileContext";
 import BigTweetHeader from "./Components/BigTweetHeader";
+import ErrorPage from "./Components/ErrorPage";
 
 const App = () => {
-  const { status } = React.useContext(CurrentUserContext);
+  const { status, error } = React.useContext(CurrentUserContext);
   return (
     <>
       <Router>
@@ -26,13 +27,17 @@ const App = () => {
           <Sidebar />
           <Switch>
             <Route exact path="/">
-              <div>
-                {status !== "loading" ? <HomeFeedHeader /> : null}
-                {status !== "loading" ? <TweetInput /> : <LoadingIcon />}
-                {status !== "loading" ? (
-                  <HomeFeed url="/api/me/home-feed" />
-                ) : null}
-              </div>
+              {error === true ? (
+                <ErrorPage />
+              ) : (
+                <div>
+                  {status !== "loading" ? <HomeFeedHeader /> : null}
+                  {status !== "loading" ? <TweetInput /> : <LoadingIcon />}
+                  {status !== "loading" ? (
+                    <HomeFeed url="/api/me/home-feed" />
+                  ) : null}
+                </div>
+              )}
             </Route>
             <Route exact path="/notifications">
               <Notifications />

@@ -1,7 +1,7 @@
 import React from "react";
 
 const FeedHook = (obj) => {
-  const { url, dataSet, loadingStatus } = obj;
+  const { url, dataSet, loadingStatus, errorSet } = obj;
   React.useEffect(() => {
     fetch(`${url}`, {
       method: "GET",
@@ -9,7 +9,13 @@ const FeedHook = (obj) => {
         accept: "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          errorSet(true);
+          throw Error("Server error.");
+        }
+        return res.json();
+      })
       .then((data) => {
         //console.log(data);
         dataSet(data);
@@ -20,7 +26,7 @@ const FeedHook = (obj) => {
     return () => {
       loadingStatus("loading");
     };
-  }, [url, dataSet, loadingStatus]);
+  }, [url, dataSet, loadingStatus, errorSet]);
 };
 
 export default FeedHook;
