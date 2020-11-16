@@ -14,6 +14,7 @@ import TweetInput from "./Components/TweetInput";
 import LoadingIcon from "./Components/LoadingIcon";
 import { HomeFeedHeader } from "./Components/HomeFeedHeader";
 import ProfileProvider from "./Components/ProfileContext";
+import BigTweetHeader from "./Components/BigTweetHeader";
 
 const App = () => {
   const { status } = React.useContext(CurrentUserContext);
@@ -40,7 +41,10 @@ const App = () => {
               <Bookmarks />
             </Route>
             <Route exact path="/tweet/:tweetId">
-              <TweetDetails />
+              <div>
+                {status !== "loading" ? <BigTweetHeader /> : null}
+                {status !== "loading" ? <TweetDetails /> : null}
+              </div>
             </Route>
             <Route exact path="/:profileId">
               <ProfileProvider>

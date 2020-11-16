@@ -99,6 +99,7 @@ const IconWrapper = styled.span`
   &:hover > svg {
     color: ${COLORS.primary};
     background: ${COLORS.hover};
+    cursor: pointer;
   }
 `;
 
